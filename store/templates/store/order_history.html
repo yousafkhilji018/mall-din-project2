@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}My Orders | MALL DIN{% endblock %}
+{% block content %}
+<div class="container" style="padding:40px 16px;">
+  <h1>My Orders</h1>
+  {% for order in orders %}
+  <div style="border:1px solid #eee;border-radius:12px;padding:16px;margin:12px 0;">
+    <strong>Order #{{ order.id }}</strong> — Rs. {{ order.total_amount }} — {{ order.status }}
+    <br><small>{{ order.created_at }}</small>
+    <br><a href="{% url 'order_confirmation' order.id %}">View</a>
+  </div>
+  {% empty %}<p>No orders yet.</p>{% endfor %}
+</div>
+{% endblock %}

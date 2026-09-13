@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Profile | MALL DIN{% endblock %}
+{% block content %}
+<div class="container" style="padding:40px 16px;max-width:520px;">
+  <h1>My Profile</h1>
+  <form method="post" enctype="multipart/form-data" style="margin-top:20px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+  <p style="margin-top:16px;"><a href="{% url 'order_history' %}">My Orders</a></p>
+</div>
+{% endblock %}

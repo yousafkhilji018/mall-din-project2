@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Entertainment | MALL DIN{% endblock %}
+{% block content %}
+<div class="container" style="padding:40px 16px;">
+  <h1>Entertainment</h1>
+  {% for v in venues %}
+  <div style="border:1px solid #eee;border-radius:12px;padding:16px;margin:12px 0;">
+    <h3>{{ v.name }}</h3>
+    <p>{{ v.type }} · {{ v.floor }} · {{ v.hours }}</p>
+    <p>{{ v.description }}</p>
+    <p>{{ v.price }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

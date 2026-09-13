@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Dining | MALL DIN{% endblock %}
+{% block content %}
+<div class="container" style="padding:40px 16px;">
+  <h1>Dining</h1>
+  {% for r in restaurants %}
+  <div style="border:1px solid #eee;border-radius:12px;padding:16px;margin:12px 0;">
+    <h3>{{ r.name }}</h3>
+    <p>{{ r.cuisine }} · {{ r.floor }} · {{ r.hours }}</p>
+    <p>{{ r.description }}</p>
+    <p>{{ r.price_range }} · ★ {{ r.rating }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
