@@ -1,4 +1,4 @@
-# No-op: image_url already in 0001_initial
+# No-op placeholder (fields already in 0001)
 from django.db import migrations
 
 
