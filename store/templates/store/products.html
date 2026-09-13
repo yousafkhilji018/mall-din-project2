@@ -17,13 +17,13 @@
       </form>
     </div>
     {% empty %}
-    <p>No products yet. Database is ready — seed data locally or add via Admin.</p>
+    <p style="grid-column:1/-1;">No products yet. Refresh the page once — sample products load automatically on first visit.</p>
     {% endfor %}
   </div>
-  {% if products.has_other_pages %}
-  <div style="margin-top:24px;display:flex;gap:8px;">
+  {% if products.paginator %}
+  <div style="margin-top:24px;display:flex;gap:8px;align-items:center;">
     {% if products.has_previous %}<a href="?page={{ products.previous_page_number }}">Prev</a>{% endif %}
-    <span>Page {{ products.number }}</span>
+    <span>Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
     {% if products.has_next %}<a href="?page={{ products.next_page_number }}">Next</a>{% endif %}
   </div>
   {% endif %}
