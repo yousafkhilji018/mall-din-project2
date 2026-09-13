@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Categories | MALL DIN{% endblock %}
+{% block content %}
+<div class="container" style="padding:40px 16px;">
+  <h1>Categories</h1>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;">
+    {% for cat in categories %}
+    <a href="{% url 'category_products' cat.slug %}" style="padding:12px 20px;background:#f5f5f5;border-radius:12px;text-decoration:none;color:#111;">{{ cat.icon }} {{ cat.name }}</a>
+    {% empty %}<p>No categories yet.</p>{% endfor %}
+  </div>
+</div>
+{% endblock %}

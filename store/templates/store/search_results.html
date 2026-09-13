@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Search | MALL DIN{% endblock %}
+{% block content %}
+<div class="container" style="padding:40px 16px;">
+  <h1>Search{% if query %}: {{ query }}{% endif %}</h1>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:24px;">
+    {% for product in products %}
+    <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+      <h3><a href="{% url 'product_detail' product.slug %}">{{ product.name }}</a></h3>
+      <p style="color:#b30000;font-weight:700;">Rs. {{ product.price }}</p>
+    </div>
+    {% empty %}<p>No results found.</p>{% endfor %}
+  </div>
+</div>
+{% endblock %}

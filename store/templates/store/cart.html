@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Cart | MALL DIN{% endblock %}
+{% block content %}
+<div class="container" style="padding:40px 16px;">
+  <h1>Your Cart</h1>
+  {% if cart_items %}
+  <table style="width:100%;border-collapse:collapse;margin-top:20px;">
+    <tr style="border-bottom:2px solid #eee;text-align:left;"><th>Product</th><th>Qty</th><th>Price</th><th></th></tr>
+    {% for item in cart_items %}
+    <tr style="border-bottom:1px solid #eee;">
+      <td style="padding:12px 0;">{{ item.product.name }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>Rs. {{ item.get_total_price }}</td>
+      <td><a href="{% url 'remove_from_cart' item.id %}">Remove</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <p style="margin-top:20px;font-size:1.2rem;"><strong>Subtotal:</strong> Rs. {{ cart_total }}</p>
+  <p><strong>Delivery:</strong> Rs. {{ delivery_fee }}</p>
+  <p style="font-size:1.3rem;color:#b30000;"><strong>Total:</strong> Rs. {{ grand_total }}</p>
+  <a href="{% url 'checkout' %}" class="btn btn-primary" style="margin-top:16px;">Checkout</a>
+  {% else %}
+  <p>Your cart is empty. <a href="{% url 'products' %}">Continue shopping</a></p>
+  {% endif %}
+</div>
+{% endblock %}

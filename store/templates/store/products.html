@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Products | MALL DIN{% endblock %}
+{% block content %}
+<div class="container" style="padding:40px 16px;">
+  <h1>Store</h1>
+  {% if query %}<p>Search: {{ query }}</p>{% endif %}
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:24px;">
+    {% for product in products %}
+    <div style="border:1px solid #eee;border-radius:12px;padding:16px;">
+      <h3 style="margin:0 0 8px;font-size:1rem;"><a href="{% url 'product_detail' product.slug %}" style="color:#111;text-decoration:none;">{{ product.name }}</a></h3>
+      <p style="color:#b30000;font-weight:700;margin:0;">Rs. {{ product.price }}</p>
+      {% if product.brand %}<p style="color:#666;font-size:13px;">{{ product.brand }}</p>{% endif %}
+      <form action="{% url 'add_to_cart' product.id %}" method="post" style="margin-top:12px;">
+        {% csrf_token %}
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="btn btn-primary btn-sm add-to-cart-btn">Add to Cart</button>
+      </form>
+    </div>
+    {% empty %}
+    <p>No products yet. Database is ready — seed data locally or add via Admin.</p>
+    {% endfor %}
+  </div>
+  {% if products.has_other_pages %}
+  <div style="margin-top:24px;display:flex;gap:8px;">
+    {% if products.has_previous %}<a href="?page={{ products.previous_page_number }}">Prev</a>{% endif %}
+    <span>Page {{ products.number }}</span>
+    {% if products.has_next %}<a href="?page={{ products.next_page_number }}">Next</a>{% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

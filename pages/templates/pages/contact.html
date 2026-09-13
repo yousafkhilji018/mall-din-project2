@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Contact | MALL DIN{% endblock %}
+{% block content %}
+<div class="container" style="padding:40px 16px;max-width:600px;">
+  <h1>Contact Us</h1>
+  <p>Phone: <a href="tel:+923441628127">+92 344 1628127</a><br>Email: Abdullah@malldin.com<br>Location: Dhobighat, Lahore</p>
+  <form method="post" style="margin-top:24px;">
+    {% csrf_token %}
+    <p><input name="name" placeholder="Your Name" required style="width:100%;padding:10px;margin-bottom:8px;"></p>
+    <p><input name="email" type="email" placeholder="Email" required style="width:100%;padding:10px;margin-bottom:8px;"></p>
+    <p><input name="phone" placeholder="Phone" style="width:100%;padding:10px;margin-bottom:8px;"></p>
+    <p><input name="subject" placeholder="Subject" required style="width:100%;padding:10px;margin-bottom:8px;"></p>
+    <p><textarea name="message" placeholder="Message" rows="5" required style="width:100%;padding:10px;"></textarea></p>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+  </form>
+</div>
+{% endblock %}

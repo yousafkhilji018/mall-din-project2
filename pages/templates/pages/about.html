@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}About | MALL DIN{% endblock %}
+{% block content %}
+<div class="container" style="padding:40px 16px;">
+  <h1>About MALL DIN Cash & Carry</h1>
+  <p>Your trusted supermarket in Dhobighat / Bhogiwall, Lahore.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-top:32px;">
+    <div style="text-align:center;padding:20px;background:#f5f5f5;border-radius:12px;"><strong style="font-size:1.5rem;color:#b30000;">{{ stats.products }}</strong><br>Products</div>
+    <div style="text-align:center;padding:20px;background:#f5f5f5;border-radius:12px;"><strong style="font-size:1.5rem;color:#b30000;">{{ stats.departments }}</strong><br>Departments</div>
+    <div style="text-align:center;padding:20px;background:#f5f5f5;border-radius:12px;"><strong style="font-size:1.5rem;color:#b30000;">{{ stats.customers }}</strong><br>Customers</div>
+    <div style="text-align:center;padding:20px;background:#f5f5f5;border-radius:12px;"><strong style="font-size:1.5rem;color:#b30000;">{{ stats.years }}</strong><br>Years</div>
+  </div>
+</div>
+{% endblock %}
