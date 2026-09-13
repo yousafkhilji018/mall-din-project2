@@ -10,7 +10,7 @@ application = get_wsgi_application()
 
 
 def _bootstrap_db():
-    """Create tables + seed a few products on Vercel cold start."""
+    """Create tables, admin user, and sample products on Vercel cold start."""
     if not os.environ.get('VERCEL'):
         return
     try:
@@ -18,6 +18,28 @@ def _bootstrap_db():
         call_command('migrate', run_syncdb=True, verbosity=0, interactive=False)
     except Exception:
         return
+
+    # Default admin login (demo)
+    try:
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        username = os.environ.get('DJANGO_ADMIN_USER', 'admin')
+        password = os.environ.get('DJANGO_ADMIN_PASSWORD', 'admin123')
+        email = os.environ.get('DJANGO_ADMIN_EMAIL', 'admin@malldin.com')
+        if not User.objects.filter(username=username).exists():
+            User.objects.create_superuser(username=username, email=email, password=password)
+        else:
+            u = User.objects.get(username=username)
+            if not u.is_superuser:
+                u.is_superuser = True
+                u.is_staff = True
+                u.save()
+            u.set_password(password)
+            u.save()
+    except Exception:
+        pass
+
+    # Sample products
     try:
         from store.models import Category, Product
         if Product.objects.exists():
