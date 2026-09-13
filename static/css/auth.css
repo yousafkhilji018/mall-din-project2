@@ -1,0 +1,139 @@
+/* ============================================
+   MALL_DIN Super Store - Auth Stylesheet
+   ============================================ */
+
+.auth-page {
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    position: relative;
+}
+
+.auth-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #b30000 0%, #8a0000 100%);
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+    opacity: 0.03;
+}
+
+.auth-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 460px;
+    padding: 45px 40px;
+    position: relative;
+    z-index: 1;
+    animation: authSlideUp 0.5s ease;
+}
+
+@keyframes authSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.auth-header .logo {
+    justify-content: center;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    font-size: 14px;
+    color: #666;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.auth-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.auth-form .form-group input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #333;
+    background: #fafafa;
+    transition: all 0.3s;
+}
+
+.auth-form .form-group input:focus {
+    outline: none;
+    border-color: #b30000;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(179, 0, 0, 0.08);
+}
+
+.auth-form .btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #b30000 0%, #8a0000 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.auth-form .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(179, 0, 0, 0.3);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    color: #666;
+}
+
+.auth-footer a {
+    color: #b30000;
+    font-weight: 700;
+}
+
+@media (max-width: 500px) {
+    .auth-card {
+        padding: 35px 25px;
+    }
+}
